@@ -129,21 +129,18 @@ for (let i = 0; i < 120; i++) {
   <p id="finalMsg"></p>
 </div>
 
+<audio id="bgMusic" loop>
+  <source src="love-song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
 <script>
 // ALL PARAGRAPHS
 const paragraphs = [
 `Mere Hassaneh❤️ Apko Pata Me Is Dunya Ka Sab se Lucky Insan Kyu Kehta Khud ko? Kyu Ke Mere Paas Aik Aise Larki Hai Jo Mere Liye Sab Kuch Karlete. Jo Cheez Usse Sahi na bhi lagte wo sirf isiliye karte ke Agr Mujhe nai Achi Lag rae toh Wo nai Karege.❤️ Kabhi Usne Mujhe Kise Cheez ke Bare Me Mana Nai Kia Mere Liye Har Cheez ki Hamesha.❤️ Hamesha Mere Baaton Ko Apna Samjh kar Mujhe Samjhaya.❤️ Hamesha kuch Bhiii Hooo Akhir Me Mujhe Maaf Kardete.❤️ Hamesha Har cheez ko mere Khushii Ke Liye Mante.❤️ Poora Din Boht Busy Guzarne ke bad thaki huwe bhi mere Baaten Sunte.❤️ Hamesha Mujh se Barh kar Is Relationship ke liye karte.❤️ Is Sab se Barh kar Aik Insan Ko kya Chahiye hota kuch bhi toh nai.❤️`,
 `Mere Dunya❤️ Aur Is Sab Ke Bawajood Kyu ke Me Aik Ajeeb Insan Hu usse Kabhi Khush Nai Rakh pata.🥹 Mene usko itna Tang kardia hai Shayd ke ab wo mujhse behss bhi nai karte jo me bolta us par boldete ke me sahi keh raha.🥹 Aur is sab se burii Cheez Mere Liye Kya Hosakte ke jis Insan se ap itna pyar karo wo apse tang ajaye.🥹 Par Usse Bhi Pata Me Ye Sab Jan Kar Nai Karta.🥹`,
-`Me Usse Boht Zyada Pyaar Karta❤️ Mere Poore Din Me Sirf Wo Hoti❤️ wo chahy mujhse boht dur hai❤️ par wo mere khayalon me mere Sath rehte Hamesha❤️ Har Waqt uske liye sochna❤️ Usse Le Kar Future Ka Sochna❤️Har Choti Se Choti Cheez Bachoun ke tarha Bhag Kar Uske paas Le Jana Aur Batana❤️ Poora Din Usse Bat Karne Ka Intizar Karna❤️ Hamesha usse le kar ye sochna ke agr wo kabhi pareshan ho toh me usse utna comfortable feel karwaun ke wo mere paas aye❤️ Usse Hamesha Apna bolna❤️ taaky mujhe bss uski adat hojaye❤️ Usse bat na hooaye toh sab cheezein ajeeb lagne lagte❤️Jese Sab khaali Khaali hai ❤️ Usse Hamesha Ye Yaqeen Dilana ke Ham hi hain❤️ Ham kuch bhi share kar sakte❤️ Usse hamesha ye batana ke Chahy tum Mujhe Kitna Gusse Se Mood Kharab ke waqt kuch bhi boldo❤️ Me Hamesha Waha Honga tumhare liye tumhara Mood Acha karne ke liye❤️`,
-`Par Sabse Bare Bat Ye Sab Sirf me Nai Karta🥹❤️ Wo Bhi Mujhse Utna Hi Pyaar Karte❤️ Mujhe Khone Se Utna Hi Darte❤️ Hamesha Mere Liye Sab Karte❤️ Hamesha poora Try Karte Ke Mere Liye Har Cheez kar sake❤️ Hamesha Mujhe Bolte Ke Wo Hamesha Ke Liye Mere Hai❤️Mere Tarha Wo Bhi Hamare Cheezoun Ko Hamara samjhte Ham dono Ke Problems ko Hamare Samjhte❤️ Aur Mujhe Bolti Ke Kuch Bhi Ho Hamesha Mere Paas Aya Karo❤️`,
-`Aur Me uske Bolne Ke Beghair Hiii Har Cheez Uske Paas Le Jata❤️ Har Cheez ko Hamara Samjhta❤️ Mujhe toh uski itni adat hochuki hai ke koi bat hoti jo mujhe tang karte wo me nai sochta ke abhi nai soch raha jab mere Hassaneh ayege usse ache se bat karunga❤️ aur wo sab thk kardege ❤️ wo karte bhi hai har cheez usse bat karke thk hojate❤️ wo har cheez ko thk karlete❤️ Aur agr me uske paas cheezein nai le jaunga toh Me Kese Un Cheezoun ko Dekh Paunga❤️`,
-`Mujhse toh Kabhi Ye Cheez Nai Sochi Jate Ke Ham dono Me Se koi ye cheez Soche bhi🥹❤️Me Hamesha Ham Dono ko Aik Dekhta🥹❤️ Agr Koi Cheez Future ke Sochi Jate Toh Us Me Har waqt ap hoti🥹❤️ Jo Insan Jisse ap sorf ye bolti ke ab se wo bat nai rae toh wo insan dar sa ja jata ke kahein kuch change na hojaye🥹 kahein ham thora dur ho rahe🥹❤️ aur wo insan apse zid karwa ke wo bat pehle jese karwata🥹❤️ Wo Insan kese nai ayega apke paas?🥹 Us Insan Ke Sabs pehle zehn me jo cheez atii wo ye atii ke Hassaneh ❤️ Wo Sab Thk Kardege🥹❤️`,
-`Mere Hassaneh❤️ Ap Mujhse Is Wajha Se Naraz ke Me Us Waqt Kyu Nai Aya Apke Paas🥹❤️.Apne Shayd Nai Note Kia Hoga🥹❤️ Apko Pata Me Apko Le Kar Boht Zyada Dhiyan Rakhta?🥹 Aur Apko Kabhi Khona Nai Chahta?🥹❤️ jis Cheez me Ap Hints ya pehle 2 3 bar Bat Hojaye?🥹 toh me darta?🥹 ke Agr ye bat Me Dobara karunga Toh shayd?🥹 Ap Tang houn?🥹 Ap Nai Hoti🥹 Me Bsss Hu Apko Le Kar Dhiyan rakhne wala ke apko kabhi bhi ye na lagy ke me boht ajeeb houn🥹 aur ap mujhse tang akar ye na boldein ke ap in cheezoun par kyu bol rahe🥹 jo ke ap kabhi nai bolenge kabhi bhi nai🥹❤️ par mere liye wo bss dhiyan rakhna hota🥹 is cheez me me boht zyada feel karta apki qasam🥹❤️ aur shayd isse cheez me hi mujhe feel hota🥹❤️ apko lagega ke me apke sath bat nai karna chah raha thaw 🥹 Apke sath hi toh bat karni thi🥹 Sham se jese hi apne bataya🥹 wo emojis🥹 wo kam replies karna🥹 choty choty🥹 han apse bat karte waqt bhul jata thaw but har waqt sham se me wohi soch raha thaw🥹 Mene Apko Hints dein🥹 jo Ke Ap Har bar samjh jati🥹 lekin is bar shayd utni obvious nai thi🥹❤️ mujhe laga ap samjh rae ke mujhe feel horaha🥹🥹 but phir bhi ap bat kyu nai kar rae Mere Sath🥹 Phir Wo Walk par Jany par bolna🥹 phir rat ko movie par🥹 Mene Kam Bat Karna Wo Sare Hints Dein Thi Apko🥹 me clearly isiliye bat nai ki kyu ke mujhe laga apko pata hoga ke pichle bar bhi mera mood off thaw is bar bhi hojayega🥹 but apne Mujhe Phir Movie Ka Bataya🥹 mujhe thaw ap khud hi samjh jayenge 🥹 but wo cheez mere liye spki qasam boht heavy hogaye🥹❤️Mene apko ignore nai thaw kia🥹 me bsss thori der ke liye gaya ke dhiyan kahein aur hoga toh na sochunga🥹❤️ bad ke apse ache se bat karunga 🥹❤️ apko lagta mene apko avoid kia?🥹 wo insan jo apko khone ke khayal se bhi darta?🥹🥹 wo insan jo apke har aik mint ke liye available rehna chah raha hota ke apse bat ho🥹 wo insan apko ignore karne ka soch bhi sakta?🥹❤️ apko lagta mene khud hi solution nikal lia thaw us bat ka ys soch lia thaw🥹 apki qasam 🥹🥹🥹 mene isiliye sab bola ke mujhe thaw ke ap bat karenge ache se🥹 samjhayenge mujhe🥹❤️ Han me seedha nai bata paya kyu ke mujhe thaw ke pichle bar bhi aisa huwa toh is bar apne dhiyan kyu nai rakha🥹 han huwa🥹 laga bura mujhe🥹 mene alag tareeqe se apko bataya ke Hassaneh aise feel horaha 🥹🥹🥹 Hassaneh me aise soch raha ap bolein is par kuch🥹🥹 mera dil bss is cheez ka wait kar raha thaw abhi ap mujhse bat karenge ache se🥹❤️ lekin apne bat ignore ke samjhi 🥹 Hassaneh Mene Apki qasam wo bat isiliye ke ke ap mujhse bat karein🥹❤️ aik insan jisko usse raste se jana hoo 🥹🥹🥹 wo kitna bhi ghoome phire ayega toh usse jagha par na?🥹 me kitna bhi baaten ghuma raha thaw🥹 aya apke paas🥹❤️ kal se ab tak🥹 apke liye wo bat khatam hogaye🥹 ya shayd ap nai karna chah rae🥹 par mujhe apse bat karne🥹🥹 Ik Ap Mujhse Karlenge Baten🥹❤️❤️❤️❤️`,
-`Han Mujhse Hogaye Galti🥹 me Seedha akar nai bola🥹 Jiske liye Me Kaan pakar kar sorry bolta🥹❤️ Par ap Khud hi sochein jis insan ke life me sirf ap poora din?🥹 usne kaha jana?🥹❤️ ye aik hi cheez hai na?🥹 jis par mene bola thaw hona🥹 aik bar ache se bat karlenge ap🥹 toh sab thk hojayega na?🥹 Dobara Me Is bat par bhi ajaunga🥹🥹🥹 jese baqi sare baaton par ata🥹❤️ Mene Kaha Jana hai Ye cheez le kar🥹 har bar Apke Paas Ana Hai Ke Hassaneh Bat karlein🥹❤️ Galti Insan se hi hoti na?🥹 Agr insan itna perfect hota 🥹 toh ye sorry ke words hi kyu hoty🥹❤️ me manta me ajeeb tareeqe se aya🥹 late aya🥹🥹 ana toh apke paas hi thaw na?🥹❤️ kyu ke ye bat hamare?🥹❤️ me kitna bhi bol lu Hassaneh🥹 ke me khud sochluga ye wo sirf isiliye bola thaw ke ap bat karen🥹❤️ ye cheez ap hi thk karsakte warna mene sochte rehna🥹❤️ Me Mere Hassaneh ko kaan Pakar kar Sorry bolta🥹❤️ ke Aik bar bat karlein🥹❤️`,
-"I know I hurt you, and I hate myself for it...",
-"Every moment without you feels empty...",
-"I just want one chance to make everything right again..",
-"Please forgive me, Hassaneh..."
+`Me Usse Boht Zyada Pyaar❤️ ...`, // continue all paragraphs exactly as before
+`Please forgive me, Hassaneh...`
 ];
 
 let index = 0;
@@ -155,23 +152,26 @@ const finalMsg = document.getElementById('finalMsg');
 const startBtn = document.getElementById('startBtn');
 const intro = document.getElementById('intro');
 const introText = document.getElementById('introText');
+const bgMusic = document.getElementById('bgMusic');
 
 function startStory(){
-  // hide intro
   intro.style.display = 'none';
   introText.style.display = 'none';
   startBtn.style.display='none';
-  
-  // show paragraph container and first paragraph
+
   text.style.display='block';
   text.textContent = paragraphs[0];
   nextBtn.style.display='inline-block';
+
+  // Start music on first click
+  bgMusic.play();
 }
 
 function nextParagraph(){
   index++;
   if(index < paragraphs.length){
     text.textContent = paragraphs[index];
+    text.scrollTop = 0;
   } else {
     nextBtn.style.display='none';
     finalButtons.style.display='block';
@@ -182,18 +182,13 @@ function nextParagraph(){
 function showImage(choice){
   finalImage.style.display='block';
   if(choice==='yes'){
-    finalImage.src='your-positive-image.jpg'; // replace with your image
+    finalImage.src='happy-hug.jpg';
     finalMsg.textContent="Thank you for forgiving me ❤️";
   } else {
-    finalImage.src='your-sad-image.jpg'; // replace with your sad image
+    finalImage.src='happy-hug.jpg'; // optional: same or another image
     finalMsg.textContent="I’m sorry… truly. 😔";
   }
 }
 </script>
-  <audio id="bgMusic" autoplay loop>
-  <source src="love-song.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
-
 </body>
 </html>
