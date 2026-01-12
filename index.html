@@ -93,52 +93,72 @@
   </style>
 </head>
 <body>
+  <!-- 100+ Floating Decorations (Hearts, Roses, Sparks) -->
+  <script>
+    const decoCount = 120;
+    for (let i = 0; i < decoCount; i++) {
+      const h = document.createElement('div');
+      h.classList.add('heart');
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = 3 + Math.random() * 5 + 's';
+      h.innerHTML = Math.random() > 0.5 ? '❤️' : '🌹';
+      document.body.appendChild(h);
+    }
+  </script>
+
   <div id="card">
-    <h2>I'm Really Sorry</h2>
-    <p id="text">Paragraph 1 goes here...</p>
-    <button onclick="nextParagraph()">Next</button>
+    <h2 class="glow-text">This page is created for <span style='color:#ff99ac;'>Hassaneh ❤️</span></h2>
+    <p id="text">Are you the one?</p>
+    <button onclick="startStory()">Yes, it's me</button>
+
+    <button id="nextBtn" style="display:none;" onclick="nextParagraph()">Next</button>
 
     <div id="finalButtons" style="display:none;">
       <button onclick="showImage('yes')">Karlo Ge</button>
       <button onclick="showImage('no')">Nahi Karna</button>
     </div>
 
-    <img id="finalImage" src="your-image.jpg" alt="" />
+    <img id="finalImage" src="" alt="Final" />
     <p id="finalMsg"></p>
   </div>
 
   <script>
+    // Romantic intro → paragraphs → final screen
+
     const paragraphs = [
-      "Paragraph 1 goes here...",
-      "Paragraph 2 goes here...",
-      "Paragraph 3 goes here..."
+      "I know I hurt you, and I hate myself for it...",
+      "Every moment without you feels empty...",
+      "I just want one chance to make everything right again...",
+      "Please forgive me, Hassaneh..."
     ];
 
     let index = 0;
-    const text = document.getElementById("text");
-    const finalButtons = document.getElementById("finalButtons");
-    const finalImage = document.getElementById("finalImage");
-    const finalMsg = document.getElementById("finalMsg");
+
+    function startStory() {
+      document.querySelector('button').style.display = 'none';
+      document.getElementById('text').textContent = paragraphs[0];
+      document.getElementById('nextBtn').style.display = 'inline-block';
+    }
 
     function nextParagraph() {
       index++;
       if (index < paragraphs.length) {
         text.textContent = paragraphs[index];
       } else {
-        document.querySelector("button").style.display = "none";
-        finalButtons.style.display = "block";
-        text.textContent = "So... batao? Karlenge?";
+        document.getElementById('nextBtn').style.display = 'none';
+        finalButtons.style.display = 'block';
+        text.textContent = "So... batao? Karlenge? 💖";
       }
     }
 
     function showImage(choice) {
-      finalImage.style.display = "block";
+      finalImage.style.display = 'block';
       if (choice === 'yes') {
-        finalImage.src = "your-positive-image.jpg";
+        finalImage.src = 'your-positive-image.jpg';
         finalMsg.textContent = "Thank you for forgiving me ❤️";
       } else {
-        finalImage.src = "your-sad-image.jpg";
-        finalMsg.textContent = "I understand... but I'm still sorry 😔";
+        finalImage.src = 'your-sad-image.jpg';
+        finalMsg.textContent = "I’m sorry… truly. 😔";
       }
     }
   </script>
