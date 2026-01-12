@@ -1,162 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Hassaneh ❤️</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>I'm Sorry</title>
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: #000;
-        overflow-x: hidden;
-        font-family: "Poppins", sans-serif;
-        color: white;
-        text-align: center;
-    }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #1b1b2f, #162447, #1f4068, #1b1b2f);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
 
-    #startScreen, #paragraphScreen, #finalScreen {
-        display: none;
-        padding: 30px;
-    }
+/* Floating hearts & roses */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 20px;
+  animation: rise 4s linear infinite;
+  opacity: 0.7;
+}
+@keyframes rise {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-120vh) scale(1.6); opacity: 0; }
+}
 
-    .btn {
-        background: #ff3e6c;
-        padding: 12px 25px;
-        border-radius: 30px;
-        color: white;
-        border: none;
-        cursor: pointer;
-        margin-top: 20px;
-        font-size: 18px;
-        transition: 0.3s;
-    }
+/* Glowing text */
+.glow-text {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff4d6d; }
+  to { text-shadow: 0 0 25px #ff99ac; }
+}
 
-    .btn:hover {
-        transform: scale(1.1);
-        background: #ff1e50;
-    }
+/* Card styling */
+#card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 35px;
+  border-radius: 25px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 0 25px rgba(255, 100, 150, 0.3);
+  backdrop-filter: blur(12px);
+  animation: floatCard 4s ease-in-out infinite alternate;
+}
+@keyframes floatCard {
+  from { transform: translateY(0); }
+  to { transform: translateY(-12px); }
+}
 
-    .heart {
-        position: fixed;
-        top: -10px;
-        color: red;
-        font-size: 20px;
-        animation: fall 4s linear infinite;
-    }
+/* Buttons */
+button {
+  background: linear-gradient(45deg, #ff4d6d, #ff99ac);
+  border: none;
+  padding: 14px 26px;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 22px;
+  color: white;
+  transition: 0.3s;
+  box-shadow: 0 0 12px rgba(255, 100, 150, 0.4);
+}
+button:hover {
+  transform: scale(1.09);
+  box-shadow: 0 0 18px rgba(255, 150, 200, 0.7);
+}
 
-    @keyframes fall {
-        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
-    #popupImage {
-        display: none;
-        width: 300px;
-        margin-top: 20px;
-        border-radius: 20px;
-        box-shadow: 0 0 20px pink;
-    }
-
+/* Final image */
+#finalImage {
+  display: none;
+  margin-top: 22px;
+  max-width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 0 20px rgba(255, 150, 200, 0.4);
+  animation: fadeIn 1.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95);} 
+  to { opacity: 1; transform: scale(1);} 
+}
 </style>
 </head>
-
 <body>
 
-<!-- START SCREEN -->
-<div id="startScreen" style="display:block;">
-    <h1>This page is created for <span style="color:pink;">Hassaneh ❤️</span></h1>
-    <p>Are you the one?</p>
-    <button class="btn" onclick="startStory()">Yes, it's me ❤️</button>
-</div>
+<!-- Decorative floating hearts & roses -->
+<script>
+for (let i = 0; i < 120; i++) {
+  const h = document.createElement('div');
+  h.classList.add('heart');
+  h.style.left = Math.random()*100 + 'vw';
+  h.style.animationDuration = 3 + Math.random()*5 + 's';
+  h.innerHTML = Math.random()>0.5?'❤️':'🌹';
+  document.body.appendChild(h);
+}
+</script>
 
-<!-- PARAGRAPH SCREEN -->
-<div id="paragraphScreen">
-    <h2 id="paraText"></h2>
-    <button class="btn" onclick="nextParagraph()">Next ❤️</button>
-</div>
+<div id="card">
+  <h2 class="glow-text">This page is created for <span style='color:#ff99ac;'>Hassaneh ❤️</span></h2>
+  <p id="text">Are you the one?</p>
+  <button id="startBtn" onclick="startStory()">Yes, it's me ❤️</button>
+  <button id="nextBtn" style="display:none;" onclick="nextParagraph()">Next ❤️</button>
 
-<!-- FINAL CHOICE SCREEN -->
-<div id="finalScreen">
-    <h1>Hassaneh... will you forgive me? ❤️</h1>
+  <div id="finalButtons" style="display:none;">
+    <button onclick="showImage('yes')">KARLENGE ❤️</button>
+    <button onclick="showImage('no')">Nahi Karna 🥹</button>
+  </div>
 
-    <button class="btn" onclick="showLove()">KARLENGE ❤️</button>
-    <button class="btn" onclick="noLove()">Nahi Karte 🥹</button>
-
-    <img id="popupImage" src="https://i.imgur.com/VTlXW6m.jpeg">
-    <h2 id="finalText" style="display:none; color:pink;"></h2>
+  <img id="finalImage" src="" alt="Final Image" />
+  <p id="finalMsg"></p>
 </div>
 
 <script>
-    /* ALL YOUR PARAGRAPHS ADDED HERE */
-    const paragraphs = [
-        "Mere Hassaneh❤️ Apko Pata Me Is Dunya Ka Sab se Lucky Insan Kyu Kehta Khud ko? Kyu Ke Mere Paas Aik Aise Larki Hai Jo Mere Liye Sab Kuch Karlete. Jo Cheez Usse Sahi na bhi lagte wo sirf isiliye karte ke Agr Mujhe nai Achi Lag rae toh Wo nai Karege.❤️ Kabhi Usne Mujhe Kise Cheez ke Bare Me Mana Nai Kia Mere Liye Har Cheez ki Hamesha.❤️ Hamesha Mere Baaton Ko Apna Samjh kar Mujhe Samjhaya.❤️ Hamesha kuch Bhiii Hooo Akhir Me Mujhe Maaf Kardete.❤️ Hamesha Har cheez ko mere Khushii Ke Liye Mante.❤️ Poora Din Boht Busy Guzarne ke bad thaki huwe bhi mere Baaten Sunte.❤️ Hamesha Mujh se Barh kar Is Relationship ke liye karte.❤️ Is Sab se Barh kar Aik Insan Ko kya Chahiye hota kuch bhi toh nai.❤️",
+// ALL PARAGRAPHS
+const paragraphs = [
+"Mere Hassaneh❤️ Apko Pata Me Is Dunya Ka Sab se Lucky Insan Kyu Kehta Khud ko? Kyu Ke Mere Paas Aik Aise Larki Hai Jo Mere Liye Sab Kuch Karlete. Jo Cheez Usse Sahi na bhi lagte wo sirf isiliye karte ke Agr Mujhe nai Achi Lag rae toh Wo nai Karege.❤️ Kabhi Usne Mujhe Kise Cheez ke Bare Me Mana Nai Kia Mere Liye Har Cheez ki Hamesha.❤️ Hamesha Mere Baaton Ko Apna Samjh kar Mujhe Samjhaya.❤️ Hamesha kuch Bhiii Hooo Akhir Me Mujhe Maaf Kardete.❤️ Hamesha Har cheez ko mere Khushii Ke Liye Mante.❤️ Poora Din Boht Busy Guzarne ke bad thaki huwe bhi mere Baaten Sunte.❤️ Hamesha Mujh se Barh kar Is Relationship ke liye karte.❤️ Is Sab se Barh kar Aik Insan Ko kya Chahiye hota kuch bhi toh nai.❤️",
+"Mere Dunya❤️ Aur Is Sab Ke Bawajood Kyu ke Me Aik Ajeeb Insan Hu usse Kabhi Khush Nai Rakh pata.🥹 Mene usko itna Tang kardia hai Shayd ke ab wo mujhse behss bhi nai karte jo me bolta us par boldete ke me sahi keh raha.🥹 Aur is sab se burii Cheez Mere Liye Kya Hosakte ke jis Insan se ap itna pyar karo wo apse tang ajaye.🥹 Par Usse Bhi Pata Me Ye Sab Jan Kar Nai Karta.🥹",
+"Me Usse Boht Zyada Pyaar Karta❤️ Mere Poore Din Me Sirf Wo Hoti❤️ wo chahy mujhse boht dur hai❤️ par wo mere khayalon me mere Sath rehte Hamesha❤️ Har Waqt uske liye sochna❤️ Usse Le Kar Future Ka Sochna❤️ Har Choti Se Choti Cheez Bachoun ke tarha Bhag Kar Uske paas Le Jana Aur Batana❤️ Poora Din Usse Bat Karne Ka Intizar Karna❤️ Hamesha usse le kar ye sochna ke agr wo kabhi pareshan ho toh me usse utna comfortable feel karwaun ke wo mere paas aye❤️ Usse Hamesha Apna bolna❤️ taaky mujhe bss uski adat hojaye❤️ Usse bat na hooaye toh sab cheezein ajeeb lagne lagte❤️ Jese Sab khaali Khaali hai ❤️ Usse Hamesha Ye Yaqeen Dilana ke Ham hi hain❤️ Ham kuch bhi share kar sakte❤️ Usse hamesha ye batana ke Chahy tum Mujhe Kitna Gusse Se Mood Kharab ke waqt kuch bhi boldo❤️ Me Hamesha Waha Honga tumhare liye tumhara Mood Acha karne ke liye❤️",
+"Par Sabse Bare Bat Ye Sab Sirf me Nai Karta🥹❤️ Wo Bhi Mujhse Utna Hi Pyaar Karte❤️ Mujhe Khone Se Utna Hi Darte❤️ Hamesha Mere Liye Sab Karte❤️ Hamesha poora Try Karte Ke Mere Liye Har Cheez kar sake❤️ Hamesha Mujhe Bolte Ke Wo Hamesha Ke Liye Mere Hai❤️ Mere Tarha Wo Bhi Hamare Cheezoun Ko Hamara samjhte Ham dono Ke Problems ko Hamare Samjhte❤️ Aur Mujhe Bolti Ke Kuch Bhi Ho Hamesha Mere Paas Aya Karo❤️",
+"Aur Me uske Bolne Ke Beghair Hiii Har Cheez Uske Paas Le Jata❤️ Har Cheez ko Hamara Samjhta❤️ Mujhe toh uski itni adat hochuki hai ke koi bat hoti jo mujhe tang karte wo me nai sochta ke abhi nai soch raha jab mere Hassaneh ayege usse ache se bat karunga❤️",
+"Mujhse toh Kabhi Ye Cheez Nai Sochi Jate Ke Ham dono Me Se koi ye cheez Soche bhi🥹❤️ Me Hamesha Ham Dono ko Aik Dekhta🥹❤️ Agr Koi Cheez Future ke Sochi Jate Toh Us Me Har waqt ap hoti🥹❤️ Jo Insan Jisse ap sorf ye bolti ke ab se wo bat nai rae toh wo insan dar sa ja jata ke kahein kuch change na hojaye🥹 kahein ham thora dur ho rahe🥹❤️ aur wo insan apse zid karwa ke wo bat pehle jese karwata🥹❤️ Wo Insan kese nai ayega apke paas?🥹 Us Insan Ke Sabs pehle zehn me jo cheez atii wo ye atii ke Hassaneh ❤️ Wo Sab Thk Kardege🥹❤️",
+"Mere Hassaneh❤️ Ap Mujhse Is Wajha Se Naraz ke Me Us Waqt Kyu Nai Aya Apke Paas🥹❤️. Apne Shayd Nai Note Kia Hoga🥹❤️ Apko Pata Me Apko Le Kar Boht Zyada Dhiyan Rakhta?🥹 Aur Apko Kabhi Khona Nai Chahta?🥹❤️ jis Cheez me Ap Hints ya pehle 2 3 bar Bat Hojaye?🥹 toh me darta?🥹 ke Agr ye bat Me Dobara karunga Toh shayd?🥹 Ap Tang houn?🥹 Ap Nai Hoti🥹 Me Bsss Hu Apko Le Kar Dhiyan rakhne wala ke apko kabhi bhi ye na lagy ke me boht ajeeb houn🥹 aur ap mujhse tang akar ye na boldein ke ap in cheezoun par kyu bol rahe🥹 jo ke ap kabhi nai bolenge kabhi bhi nai🥹❤️ par mere liye wo bss dhiyan rakhna hota🥹 is cheez me me boht zyada feel karta apki qasam🥹❤️ aur shayd isse cheez me hi mujhe feel hota🥹❤️ apko lagega ke me apke sath bat nai karna chah raha thaw 🥹 Apke sath hi toh bat karni thi🥹 Sham se jese hi apne bataya🥹 wo emojis🥹 wo kam replies karna🥹 choty choty🥹 han apse bat karte waqt bhul jata thaw but har waqt sham se me wohi soch raha thaw🥹 Mene Apko Hints dein🥹 jo Ke Ap Har bar samjh jati🥹 lekin is bar shayd utni obvious nai thi🥹❤️ mujhe laga ap samjh rae ke mujhe feel horaha🥹🥹 but phir bhi ap bat kyu nai kar rae Mere Sath🥹 Phir Wo Walk par Jany par bolna🥹 phir rat ko movie par🥹 Mene Kam Bat Karna Wo Sare Hints Dein Thi Apko🥹 me clearly isiliye bat nai ki kyu ke mujhe laga apko pata hoga ke pichle bar bhi mera mood off thaw is bar bhi hojayega🥹 but apne Mujhe Phir Movie Ka Bataya🥹 mujhe thaw ap khud hi samjh jayenge 🥹 but wo cheez mere liye spki qasam boht heavy hogaye🥹❤️ Mene apko ignore nai thaw kia🥹 me bsss thori der ke liye gaya ke dhiyan kahein aur hoga toh na sochunga🥹❤️ bad ke apse ache se bat karunga 🥹❤️ apko lagta mene apko avoid kia?🥹 wo insan jo apko khone ke khayal se bhi darta?🥹🥹 wo insan jo apke har aik mint ke liye available rehna chah raha hota ke apse bat ho🥹 wo insan apko ignore karne ka soch bhi sakta?🥹❤️ apko lagta mene khud hi solution nikal lia thaw us bat ka ys soch lia thaw🥹 apki qasam 🥹🥹🥹 mene isiliye sab bola ke mujhe thaw ke ap bat karenge ache se🥹 samjhayenge mujhe🥹❤️ Han me seedha nai bata paya kyu ke mujhe thaw ke pichle bar bhi aisa huwa toh is bar apne dhiyan kyu nai rakha🥹 han huwa🥹 laga bura mujhe🥹 mene alag tareeqe se apko bataya ke Hassaneh aise feel horaha 🥹🥹🥹 Hassaneh me aise soch raha ap bolein is par kuch🥹🥹 mera dil bss is cheez ka wait kar raha thaw abhi ap mujhse bat karenge ache se🥹❤️ lekin apne bat ignore ke samjhi 🥹 Hassaneh Mene Apki qasam wo bat isiliye ke ke ap mujhse bat karein🥹❤️ aik insan jisko usse raste se jana hoo 🥹🥹🥹 wo kitna bhi ghoome phire ayega toh usse jagha par na?🥹 me kitna bhi baaten ghuma raha thaw🥹 aya apke paas🥹❤️ kal se ab tak🥹 apke liye wo bat khatam hogaye🥹 ya shayd ap nai karna chah rae🥹 par mujhe apse bat karne🥹🥹 Ik Ap Mujhse Karlenge Baten🥹❤️❤️❤️❤️",
+"Han Mujhse Hogaye Galti🥹 me Seedha akar nai bola🥹 Jiske liye Me Kaan pakar kar sorry bolta🥹❤️ Par ap Khud hi sochein jis insan ke life me sirf ap poora din?🥹",
+"I know I hurt you, and I hate myself for it...",
+"Every moment without you feels empty...",
+"I just want one chance to make everything right again..",
+"Please forgive me, Hassaneh..."
+];
 
-        "Mere Dunya❤️ Aur Is Sab Ke Bawajood Kyu ke Me Aik Ajeeb Insan Hu usse Kabhi Khush Nai Rakh pata.🥹 Mene usko itna Tang kardia hai Shayd ke ab wo mujhse behss bhi nai karte jo me bolta us par boldete ke me sahi keh raha.🥹 Aur is sab se burii Cheez Mere Liye Kya Hosakte ke jis Insan se ap itna pyar karo wo apse tang ajaye.🥹 Par Usse Bhi Pata Me Ye Sab Jan Kar Nai Karta.🥹",
+let index=0;
+const text = document.getElementById('text');
+const nextBtn = document.getElementById('nextBtn');
+const finalButtons = document.getElementById('finalButtons');
+const finalImage = document.getElementById('finalImage');
+const finalMsg = document.getElementById('finalMsg');
 
-        "Me Usse Boht Zyada Pyaar Karta❤️ Mere Poore Din Me Sirf Wo Hoti❤️ wo chahy mujhse boht dur hai❤️ par wo mere khayalon me mere Sath rehte Hamesha❤️ Har Waqt uske liye sochna❤️ Usse Le Kar Future Ka Sochna❤️ Har Choti Se Choti Cheez Bachoun ke tarha Bhag Kar Uske paas Le Jana Aur Batana❤️",
+function startStory(){
+  startBtn.style.display='none';
+  text.textContent=paragraphs[0];
+  nextBtn.style.display='inline-block';
+}
 
-        "Par Sabse Bare Bat Ye Sab Sirf me Nai Karta🥹❤️ Wo Bhi Mujhse Utna Hi Pyaar Karte❤️ Mujhe Khone Se Utna Hi Darte❤️ Hamesha Mere Liye Sab Karte❤️ Hamesha poora Try Karte Ke Mere Liye Har Cheez kar sake❤️",
+function nextParagraph(){
+  index++;
+  if(index<paragraphs.length){
+    text.textContent=paragraphs[index];
+  }else{
+    nextBtn.style.display='none';
+    finalButtons.style.display='block';
+    text.textContent="So... batao? Karlenge? 💖";
+  }
+}
 
-        "Aur Me uske Bolne Ke Beghair Hiii Har Cheez Uske Paas Le Jata❤️ Har Cheez ko Hamara Samjhta❤️ Mujhe toh uski itni adat hochuki hai ke koi bat hoti jo mujhe tang karte wo me nai sochta ke abhi nai soch raha jab mere Hassaneh ayege usse ache se bat karunga❤️",
-
-        "Mujhse toh Kabhi Ye Cheez Nai Sochi Jate Ke Ham dono Me Se koi ye cheez Soche bhi🥹❤️ Me Hamesha Ham Dono ko Aik Dekhta🥹❤️",
-
-        "Mere Hassaneh❤️ Ap Mujhse Is Wajha Se Naraz ke Me Us Waqt Kyu Nai Aya Apke Paas🥹❤️. Apne Shayd Nai Note Kia Hoga🥹❤️ Apko Pata Me Apko Le Kar Boht Zyada Dhiyan Rakhta?🥹",
-
-        "Han Mujhse Hogaye Galti🥹 me Seedha akar nai bola🥹 Jiske liye Me Kaan pakar kar sorry bolta🥹❤️ Par ap Khud hi sochein jis insan ke life me sirf ap poora din?🥹",
-
-        "I know I hurt you, and I hate myself for it...",
-
-        "Every moment without you feels empty...",
-
-        "I just want one chance to make everything right again..",
-
-        "Please forgive me, Hassaneh..."
-    ];
-
-    let index = 0;
-
-    function startStory() {
-        document.getElementById("startScreen").style.display = "none";
-        document.getElementById("paragraphScreen").style.display = "block";
-        paraText.innerHTML = paragraphs[index];
-    }
-
-    function nextParagraph() {
-        index++;
-        if (index < paragraphs.length) {
-            paraText.innerHTML = paragraphs[index];
-        } else {
-            document.getElementById("paragraphScreen").style.display = "none";
-            document.getElementById("finalScreen").style.display = "block";
-        }
-    }
-
-    function showLove() {
-        document.getElementById("popupImage").style.display = "block";
-        document.getElementById("finalText").style.display = "block";
-        document.getElementById("finalText").innerHTML = "I love you, Hassaneh ❤️ Forever.";
-    }
-
-    function noLove() {
-        alert("🥹 It's okay… I will still wait for you, Hassaneh.");
-    }
-
-    // Falling hearts
-    function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 5000);
-    }
-    setInterval(createHeart, 200);
+function showImage(choice){
+  finalImage.style.display='block';
+  if(choice==='yes'){
+    finalImage.src='your-positive-image.jpg';
+    finalMsg.textContent="Thank you for forgiving me ❤️";
+  }else{
+    finalImage.src='your-sad-image.jpg';
+    finalMsg.textContent="I’m sorry… truly. 😔";
+  }
+}
 </script>
-
 </body>
 </html>
